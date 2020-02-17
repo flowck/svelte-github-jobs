@@ -3,7 +3,6 @@
 	import Job from "./components/Job.svelte";
 	import Footer from "./components/Footer.svelte";
 	import { onMount } from "svelte";
-	// import moment from "moment";
 	import axios from "axios";
 	let jobs = []; 
 	let page = 1;
