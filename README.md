@@ -1,93 +1,50 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+# Github Jobs
 
 
-## Get started
 
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+![Github Jobs](./page.gif)
 
 
-## Building and running in production mode
+This repository contains a frontend web application that re-implements Github's jobs page using [Svelte](https://svelte.dev/).
 
-To create an optimised version of the app:
+## Why
 
-```bash
-npm run build
-```
+It was a practical way to test Svelt in a project that is not exactly a todo list app.
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+This project covers the following techniques:
 
+* Web components
+* Life-cycle hooks
+* Asynchronous operations with `async/await` and `Promises`
+* Custom events
 
-## Single-page app mode
+## How to run it
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+The quickest way to see this project running is by clicking here: [https://svelte-github-jobs.now.sh](https://svelte-github-jobs.now.sh)
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+To run on your computer, make sure you have at least Nodejs v12.14.0 and then follow the steps below:
 
-```js
-"start": "sirv public --single"
-```
+1 - Clone this repository to your machine:
 
+    git clone git@github.com:flowck/svelte-github-jobs.git
 
-## Deploying to the web
+2 - Navigate to the project folder: 
 
-### With [now](https://zeit.co/now)
+    cd svelte-github-jobs
 
-Install `now` if you haven't already:
+3 - Install the dependencies
 
-```bash
-npm install -g now
-```
+    npm install
 
-Then, from within your project folder:
+4 - Run the Github API proxy
 
-```bash
-cd public
-now deploy --name my-project
-```
+    npm run server
 
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
+5 - Run the frontend app
 
-### With [surge](https://surge.sh/)
+    npm run dev
 
-Install `surge` if you haven't already:
+## License
 
-```bash
-npm install -g surge
-```
+MIT
 
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
