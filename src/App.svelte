@@ -14,7 +14,7 @@
 		return new Promise(async (resolve, reject) => {
 			try {
 				
-				let BASE_URL = "https://svelte-github-jobs.now.sh";
+				let BASE_URL = "https://svelte-github-jobs.now.sh/api/jobs";
 				if (window.location.hostname === "localhost") {
 					BASE_URL = "http://localhost:5001/jobs";
 				}

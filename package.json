@@ -4,17 +4,11 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "server": "nodemon server.js",
-    "start": "node server.js",
-    "init": "sirv public"
+    "server": "nodemon serverDev.js",
+    "start": "sirv public"
   },
   "engines": {
     "node": "12.14.0"
-  },
-  "now": {
-    "engines": {
-      "node": "12.14.0"
-    }
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",

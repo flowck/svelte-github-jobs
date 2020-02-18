@@ -40,7 +40,7 @@ if (process.env.NODE_ENV == "development") {
       }
     } catch (error) {
       console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      res.status(500).json({ message: "Internal Server Error", error });
     }
   });
 
@@ -60,7 +60,7 @@ if (process.env.NODE_ENV == "development") {
   
       res.json({ jobs });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      res.status(500).json({ message: "Internal Server Error", error });
     }
   });
 }
