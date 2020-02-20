@@ -33,6 +33,7 @@
     width: 100%;
     height: 32px;
     font-size: 12px;
+    padding-left: 8px;
     border: 2px solid rgba(0, 0, 0, .1);
   }
 
