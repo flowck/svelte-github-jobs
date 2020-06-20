@@ -9,7 +9,7 @@ This repository contains a frontend web application that re-implements Github's 
 
 ## Why
 
-It was a practical way to test Svelt in a project that is not exactly a todo list app.
+It was a practical way to test Svelte on a project that is not exactly a todo list app.
 
 This project covers the following techniques:
 
