@@ -2,10 +2,12 @@
 	import Filters from "./components/Filters.svelte";
 	import Job from "./components/Job.svelte";
 	import Footer from "./components/Footer.svelte";
+	import Header from "./components/Header.svelte";
 	import CardPlaceholder from "./components/CardPlaceholder.svelte";
 	import ErrorNotification from "./components/ErrorNotification.svelte";
 	import { onMount } from "svelte";
-	import axios from "axios";
+	import { getJobs } from "./actions.js";
+
 	let jobs = []; 
 	let page = 1;
 	let description = null;
@@ -13,37 +15,6 @@
 	let fullTime = null;
 	let isLoading = false;
 	let errorMessage = "";
-
-	/**
-	 * getJobs
-	 * @param {Number} page
-	 * @param {String} description
-	 * @param {String} location
-	 * @returns {Promise}
-	*/
-	function getJobs(page = 1, description, location) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				let BASE_URL = "https://svelte-github-jobs.now.sh/api/jobs";
-
-				if (window.location.hostname === "localhost") {
-					BASE_URL = "http://localhost:5001/jobs";
-				}
-
-				const query = description || location || fullTime
-					? `?page=${page}&description=${description}&location=${location}&full_time=${fullTime}`
-					: `?page=${page}`;
-
-				const response = await axios.get(`${BASE_URL}${query}`);
-			
-				// window.setTimeout(() => {
-				resolve(response.data.jobs);
-				// }, 5000);
-			} catch(error) {
-				reject(error);
-			}
-		});
-	}
 
 	/**
 	 * searchHandler
@@ -54,7 +25,7 @@
 			description = detail.description;
 			location = detail.location;
 
-			const requestJobs = await getJobs(page, description, location);
+			const requestJobs = await getJobs(page, description, location, fullTime);
 			jobs = requestJobs;
 		} catch (error) {
 			errorMessage = "Sorry, unfortunately we couldn't search jobs."
@@ -89,6 +60,7 @@
 			isLoading = false;
 			// }, 500);
 		} catch (error) {
+			console.log(error);
 			isLoading = false;
 			errorMessage = "Sorry, unfortunately load jobs from Github API, please try to refresh the page."
 		}
@@ -102,13 +74,7 @@
 	{/if}
 
 	<div class="content-wrap">
-		<header class="header">
-			<div class="wrap">
-				<h1 class="header__title">
-					<b>Github</b> Jobs
-				</h1>
-			</div>
-		</header>
+		<Header></Header>
 
 		<section class="filters">
 			<div class="wrap">
@@ -179,27 +145,15 @@ main {
 	padding-bottom: 80px;
 }
 
-.header {
-	height: 50px;
-	color: #FFF;
-	margin-bottom: 25px;
-	background-color: #2B7FC3;
-	border-top: 4px solid #1D5C8F;
-}
-
-.header__title {
-	font-size: 26px;
-	font-weight: 100;
-	margin-top: 6px;
-}
-
-.header__title b{
-	font-weight: bold;
-}
-
 :global(.wrap) {
 	width: 900px;
 	margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+	:global(.wrap) {
+		width: 90%;
+	}	
 }
 
 .jobs-section {
